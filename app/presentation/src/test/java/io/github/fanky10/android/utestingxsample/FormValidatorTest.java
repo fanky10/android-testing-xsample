@@ -16,7 +16,7 @@ public class FormValidatorTest {
         assertFalse(FormValidator.isEmail(""));
         assertFalse(FormValidator.isEmail("something"));
         assertFalse(FormValidator.isEmail("something@else"));
-        assertFalse(FormValidator.isEmail("something@else"));
+        assertFalse(FormValidator.isEmail("something@else.a"));
     }
 
     @Test
