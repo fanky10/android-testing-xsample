@@ -10,6 +10,9 @@ import static org.junit.Assert.assertTrue;
  */
 
 public class FormValidatorTest {
+
+    private static final int PASSWORD_SIZE = 6;
+
     @Test
     public void testInvalidEmail() {
         assertFalse(FormValidator.isEmail(null));
@@ -22,5 +25,18 @@ public class FormValidatorTest {
     @Test
     public void testValidEmail() {
         assertTrue(FormValidator.isEmail("some@thing.com"));
+    }
+
+    @Test
+    public void testNotLongEnoughPassword(){
+        assertFalse(FormValidator.isLongEnough(PASSWORD_SIZE, null));
+        assertFalse(FormValidator.isLongEnough(PASSWORD_SIZE, ""));
+        assertFalse(FormValidator.isLongEnough(PASSWORD_SIZE, "test"));
+    }
+
+    @Test
+    public void testLongEnoughPassword(){
+        assertTrue(FormValidator.isLongEnough(PASSWORD_SIZE, "123456"));
+        assertTrue(FormValidator.isLongEnough(PASSWORD_SIZE, "1234567"));
     }
 }
