@@ -19,4 +19,11 @@ public class FormValidator {
         }
         return pattern.matcher(target).matches();
     }
+
+    public static boolean isLongEnough(int size, String target ){
+        if(target == null){
+            return false;
+        }
+        return target.length() >= size;
+    }
 }
