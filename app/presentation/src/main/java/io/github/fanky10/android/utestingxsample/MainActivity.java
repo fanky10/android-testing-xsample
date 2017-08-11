@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final int PASSWORD_SIZE = 6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -16,8 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void onValidateClicked(View v) {
         String text = ((EditText)findViewById(R.id.txtEmail)).getText().toString();
+        String password = ((EditText)findViewById(R.id.txtPassword)).getText().toString();
         String message = "Email not valid";
-        if(FormValidator.isEmail(text)) {
+        if(FormValidator.isEmail(text) && FormValidator.isLongEnough(PASSWORD_SIZE, password)) {
             message = "Email valid";
         }
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
